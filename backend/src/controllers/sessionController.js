@@ -152,7 +152,7 @@ export async function endSession(req, res) {
         const channel = chatClient.channel("messaging", session.callId)
         await channel.delete()
 
-        session.status == "completed"
+        session.status = "completed"
         await session.save()
 
         res.status(200).json({session,message:"Session ended successfully"})
